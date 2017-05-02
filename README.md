@@ -19,14 +19,14 @@
 ```
 
 ## 安装
-```shell
+```bash
 cd modnum
 cmake .
 make
 make install
 ```
 test中有一个n=3的多表替换加密的测代码
-```shell
+```bash
 g++ PSE.cpp -l modnum -o PSE
 ./PSE
 ```

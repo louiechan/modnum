@@ -3,6 +3,7 @@
 #include <iostream>
 #include <cmath>
 
+using namespace std;
 ll Matrix::getP() const {
     return p;
 }
@@ -89,8 +90,8 @@ Matrix::Matrix(ll* items, int m, int n,ll p)
 
 Matrix::Matrix(const Matrix &M)
 {
-    colNum = M.colNum;
-    rowNum = M.rowNum;
+    colNum = M.getColNum();
+    rowNum = M.getRowNum();
     this->p = M.p;
     item.resize(rowNum);
     for (int i = 0; i < rowNum; ++i) {
@@ -103,8 +104,8 @@ Matrix::Matrix(const Matrix &M)
 
 Matrix& Matrix::operator=(const Matrix & M)
 {
-    colNum = M.colNum;
-    rowNum = M.rowNum;
+    colNum = M.getColNum();
+    rowNum = M.getRowNum();
     p=M.p;
 
     item.resize(rowNum);
@@ -157,9 +158,9 @@ int Matrix::getColNum() const
 
 ostream& operator <<(ostream &os, const Matrix &m)
 {
-    for (int i = 0; i < m.rowNum; i++)
+    for (int i = 0; i < m.getRowNum(); i++)
     {
-        for (int j = 0; j < m.colNum; j++)
+        for (int j = 0; j < m.getColNum(); j++)
             os << m.getItem(i, j) << " ";
         os << "\n";
     }
@@ -169,7 +170,7 @@ ostream& operator <<(ostream &os, const Matrix &m)
 
 Matrix Matrix::operator +(const Matrix &m)
 {
-    if (m.colNum != colNum || m.rowNum != rowNum) return *this;
+    if (m.getColNum() != colNum || m.getRowNum() != rowNum) return *this;
     Matrix tmp = *this;
     for (int i = 0; i < rowNum; i++)
     {
@@ -183,7 +184,7 @@ Matrix Matrix::operator +(const Matrix &m)
 
 Matrix Matrix::operator -(const Matrix &m)
 {
-    if (m.colNum != colNum || m.rowNum != rowNum) return *this;
+    if (m.getColNum() != colNum || m.getRowNum() != rowNum) return *this;
     Matrix tmp = *this;
     for (int i = 0; i < rowNum; i++)
     {
@@ -211,7 +212,7 @@ Matrix Matrix::operator *(const ll f)
 Matrix Matrix::operator *(const Matrix &m)
 {
 
-    if (colNum != m.rowNum||p!=m.p)
+    if (colNum != m.getRowNum()||p!=m.p)
     {
         cout << "can not multiply.";
         return *this;
@@ -222,7 +223,7 @@ Matrix Matrix::operator *(const Matrix &m)
     for (int i = 0; i <tmp.rowNum ; ++i) {
         for (int j = 0; j <tmp.colNum ; ++j) {
             ll sum = 0;
-            for (int k = 0; k < m.rowNum; ++k) {
+            for (int k = 0; k < m.getRowNum(); ++k) {
                 sum+=getItem(i,k)*m.getItem(k,j)%p;
             }
             while (sum<0){
