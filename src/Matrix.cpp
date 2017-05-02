@@ -3,7 +3,6 @@
 #include <iostream>
 #include <cmath>
 
-using namespace std;
 ll Matrix::getP() const {
     return p;
 }

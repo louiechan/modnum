@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.5)
 project(modnum)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_INSTALL_PREFIX /usr/local)
+set(CMAKE_INSTALL_PREFIX /usr)
 
 set(LIBRARY_OUTPUT_PATH ${PROJECT_BINARY_DIR}/lib)
 set(SOURCE_FILES include/Utils.h include/Matrix.h src/Utils.cpp src/Matrix.cpp include/modnum.h)

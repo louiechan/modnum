@@ -2,7 +2,8 @@
 #define MODNUM_INCLUDE_MATRIX_H
 
 #include <vector>
-
+#include <iostream>
+using namespace std;
 
 typedef long long ll;
 using namespace std;
